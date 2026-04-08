@@ -1,0 +1,6 @@
+# Copy these literal `source` lines into main.tf to consume modules from GitHub after publishing
+# infra-modules-repo/ to https://github.com/kloudstax/crossinsurance-infra-modules (pin ref tags in production).
+#
+# module "project_services" { source = "git::https://github.com/kloudstax/crossinsurance-infra-modules.git//project_services?ref=main"
+# module "vpc" {              source = "git::https://github.com/kloudstax/crossinsurance-infra-modules.git//vpc?ref=main"
+# module "peering" {           source = "git::https://github.com/kloudstax/crossinsurance-infra-modules.git//peering?ref=main"
