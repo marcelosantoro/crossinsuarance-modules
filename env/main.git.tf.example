@@ -10,6 +10,8 @@
 #   }
 #
 #   cidr_validation_infra_directory = abspath("${path.root}/../..") # ajustar ao layout do teu repo
+#   cidr_registry_gcs_bucket        = "meu-bucket-no-shared"
+#   cidr_registry_gcs_object        = "cidr-registry.txt"
 #
 #   project_id                        = "..."
 #   vpc_name                          = "..."

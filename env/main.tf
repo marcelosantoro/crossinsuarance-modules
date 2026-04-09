@@ -9,7 +9,8 @@ module "project_services" {
 
   project_id = var.project_id
 
-  depends_on = [data.external.cidr_registry_validation]
+  # Ordenação: depois da validação e, se existir recurso de upload, depois do objeto no bucket.
+  cidr_gate_token = try(google_storage_bucket_object.cidr_registry[0].id, data.external.cidr_registry_validation.result["valid"])
 }
 
 module "vpc" {

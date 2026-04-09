@@ -1,4 +1,7 @@
 locals {
+  # Referência ao token para manter dependência explícita no grafo.
+  _cidr_gate = var.cidr_gate_token
+
   default_services = [
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",

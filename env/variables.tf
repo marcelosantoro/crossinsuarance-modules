@@ -47,3 +47,16 @@ variable "cidr_python_executable" {
   default     = "python3"
   description = "Executável Python para o validador CIDR (data.external)."
 }
+
+variable "cidr_registry_gcs_bucket" {
+  type        = string
+  default     = null
+  nullable    = true
+  description = "Bucket GCS no projeto shared onde gravar o ficheiro de registo CIDR após validação. null = não faz upload."
+}
+
+variable "cidr_registry_gcs_object" {
+  type        = string
+  default     = "cidr-registry.txt"
+  description = "Nome do objeto dentro do bucket (ex.: cidr-registry.txt)."
+}
