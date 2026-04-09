@@ -1,0 +1,2 @@
+# Dependência do validador CIDR (validate_cidr_registry.py)
+pyyaml>=6.0

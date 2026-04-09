@@ -1,6 +1,23 @@
-# Copy these literal `source` lines into main.tf to consume modules from GitHub after publishing
-# infra-modules-repo/ to https://github.com/kloudstax/crossinsurance-infra-modules (pin ref tags in production).
+# Exemplo de chamada ao módulo env a partir de outro repositório (GitHub).
+# Obrigatório: cidr_validation_infra_directory = diretório que contém config/ (cidr-registry + environments.yaml).
 #
-# module "project_services" { source = "git::https://github.com/kloudstax/crossinsurance-infra-modules.git//project_services?ref=main"
-# module "vpc" {              source = "git::https://github.com/kloudstax/crossinsurance-infra-modules.git//vpc?ref=main"
-# module "peering" {           source = "git::https://github.com/kloudstax/crossinsurance-infra-modules.git//peering?ref=main"
+# module "workload" {
+#   source = "git::https://github.com/marcelosantoro/crossinsuarance-modules.git//env?ref=main"
+#
+#   providers = {
+#     google        = google
+#     google.shared = google.shared
+#   }
+#
+#   cidr_validation_infra_directory = abspath("${path.root}/../..") # ajustar ao layout do teu repo
+#
+#   project_id                        = "..."
+#   vpc_name                          = "..."
+#   subnets                           = [...]
+#   shared_project_id                 = "..."
+#   attach_shared_vpc_service_project = false
+#   peer_env                          = "dev"
+#   host_vpc_name                     = "vpc-shared"
+# }
+#
+# Requisito no runner: python3 + pip install -r env/scripts/requirements-cidr.txt (PyYAML).

@@ -8,6 +8,8 @@ module "project_services" {
   providers = { google = google }
 
   project_id = var.project_id
+
+  depends_on = [data.external.cidr_registry_validation]
 }
 
 module "vpc" {
