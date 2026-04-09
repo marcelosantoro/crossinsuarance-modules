@@ -1,5 +1,5 @@
 locals {
-  # Referência ao token para manter dependência explícita no grafo.
+  # Reference the token to keep an explicit edge in the dependency graph.
   _cidr_gate = var.cidr_gate_token
 
   default_services = [

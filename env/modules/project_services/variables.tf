@@ -4,7 +4,7 @@ variable "project_id" {
 
 variable "cidr_gate_token" {
   type        = string
-  description = "Dependência de ordenação: validação CIDR e, se aplicável, upload GCS."
+  description = "Ordering dependency: CIDR validation and, when applicable, GCS upload."
   default     = ""
 }
 

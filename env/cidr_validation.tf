@@ -1,16 +1,25 @@
-# Validação de CIDR obrigatória: falha no plan/apply antes de criar recursos na GCP.
-# Usamos data.external (não null_resource + local-exec): o provisioner do null_resource só
-# corre no apply; o programa do external corre também no terraform plan.
-#
-# Requisito na máquina/CI que executa Terraform: python3 + PyYAML (pip install -r env/scripts/requirements-cidr.txt).
+# ---------------------------------------------------------------------------
+# TEMPORARY (demo / presentation): CIDR validation is OFF.
+# To re-enable: restore the `data "external" "cidr_registry_validation"` block
+# from version control and wire `main.tf` + `cidr_registry_gcs.tf` back to it.
+# ---------------------------------------------------------------------------
 
-data "external" "cidr_registry_validation" {
-  program = concat(
-    [
-      var.cidr_python_executable,
-      abspath("${path.module}/scripts/validate_cidr_registry.py"),
-      "--external",
-    ],
-    [abspath(var.cidr_validation_infra_directory)],
-  )
+locals {
+  cidr_registry_validation_token = "disabled-for-demo"
 }
+
+# data "external" "cidr_registry_validation" {
+#   program = [
+#     var.cidr_python_executable,
+#     abspath("${path.module}/scripts/cidr_registry_gcs_sync.py"),
+#     "validate",
+#   ]
+#   query = {
+#     peer_env     = var.peer_env
+#     project_id   = var.project_id
+#     vpc_cidr     = var.vpc_cidr
+#     subnets_json = jsonencode(var.subnets)
+#     bucket       = coalesce(var.cidr_registry_gcs_bucket, "")
+#     object       = var.cidr_registry_gcs_object
+#   }
+# }

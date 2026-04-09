@@ -37,26 +37,26 @@ variable "name_prefix" {
   description = "Optional prefix for peering names; defaults to project_id-peer_env."
 }
 
-variable "cidr_validation_infra_directory" {
+variable "vpc_cidr" {
   type        = string
-  description = "Diretório raiz do stack do consumidor que contém config/cidr-registry.txt e config/environments.yaml (ex.: abspath do diretório infra/ dois níveis acima de infra/stacks)."
+  description = "IPv4 CIDR of this workload VPC (must match environments.yaml for this peer_env)."
 }
 
 variable "cidr_python_executable" {
   type        = string
   default     = "python3"
-  description = "Executável Python para o validador CIDR (data.external)."
+  description = "Python executable for the CIDR validator (data.external)."
 }
 
 variable "cidr_registry_gcs_bucket" {
   type        = string
   default     = null
   nullable    = true
-  description = "Bucket GCS no projeto shared onde gravar o ficheiro de registo CIDR após validação. null = não faz upload."
+  description = "GCS bucket in the shared project where the CIDR registry file is written after validation. null = no upload."
 }
 
 variable "cidr_registry_gcs_object" {
   type        = string
   default     = "cidr-registry.txt"
-  description = "Nome do objeto dentro do bucket (ex.: cidr-registry.txt)."
+  description = "Object name inside the bucket (e.g. cidr-registry.txt)."
 }
